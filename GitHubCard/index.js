@@ -2,18 +2,18 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
- axios  
-    .get('https://api.github.com/users/hdnye') 
+ axios.get('https://api.github.com/users/hdnye') 
+ 
         .then((response) => {
           console.log(respond);
           response.data.followers_url.forEach((card) => {
-          const newFriendEntry = new FriendCard(card); //don't need but helpful if adding constructors later//
+          const newFriendEntry = new FriendCard(card); 
           cards.appendChild(newFriendEntry);
          });
- 
+       })
 
-//      .catch((error) => {
-//       console.log(error);
+       .catch((error) => {
+      console.log(error);
  });
 /*/
 /* Step 2: Inspect and study the data coming back, this is YOUR 
@@ -85,7 +85,7 @@ http methods
   console.log('res');
 })
 
-.catch((.err) => {
+.catch((err) => {
   console.log(err);
 });
 
