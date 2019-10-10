@@ -2,7 +2,20 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+ axios  
+    .get('https://api.github.com/users/hdnye') 
+        .then((response) => {
+          console.log(respond);
+          response.data.followers_url.forEach((card) => {
+          const newFriendEntry = new FriendCard(card); //don't need but helpful if adding constructors later//
+          cards.appendChild(newFriendEntry);
+         });
+ 
 
+//      .catch((error) => {
+//       console.log(error);
+ });
+/*/
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -52,4 +65,65 @@ const followersArray = [];
   justsml
   luishrd
   bigknell
+*/
+
+/*--Class Notes--
+
+create, read, update and delete: CRUD App (ex: fb, twitter)
+
+axios requests for each of the above: 
+http methods
+.post => Create
+.get => Read
+.put => Update
+.delete => Delete
+
+
+.then & .catch block ex: 
+
+.then((res) => {
+  console.log('res');
+})
+
+.catch((.err) => {
+  console.log(err);
+});
+
+     
+component to display the axios data
+
+function SomeComponent(imgSrc) {
+
+    const newThing = document.createElement('div');
+    newThing.classList.add('css-class');
+
+    const newImg = document.createElement('img');
+    newImg.src = imgSrc;
+
+    newThing.appendChild(newImg);
+
+    return newThing;
+}
+
+const body (or whichever container class holds the children) = document.querySelector('.body);
+
+import axios for project
+
+ex: 
+  axios  or axios.get().then().catch();
+    .get('')
+    .then((res) => {
+      res.data.message(or some value from the array being referenced).forEach((item) => {
+        const newThingEntry = new SomeCard(item); //don't need but helpful if adding constructors later//
+        entry.appendChild(newThingEntry);
+        console.log(item);
+    });
+
+  })
+    .catch((err) => {
+      console.log(err);
+});
+
+
+
 */
