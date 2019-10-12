@@ -3,13 +3,16 @@
            https://api.github.com/users/<your name>
 */
  axios.get('https://api.github.com/users/hdnye') 
- 
+
         .then((response) => {
-          console.log(respond);
+          console.log(response);
+
           response.data.followers_url.forEach((card) => {
           const newFriendEntry = new FriendCard(card); 
+         
           cards.appendChild(newFriendEntry);
          });
+
        })
 
        .catch((error) => {
@@ -58,6 +61,48 @@ const followersArray = [];
 </div>
 
 */
+function githubCard(data){
+
+  const userCard = document.createElement('div');
+  const userImage = document.createElement('img');
+  const userInfo = document.createElement('div');
+  const githubName = document.createElement('h3');
+  const userName = document.createElement('p');  
+  const userLocation = document.createElement('p');
+  const userProfile = document.createElement('p');
+  const userFollowers = document.createElement('p');
+  const userFollowing = document.createElement('p');
+  const userBio = document.createElement('p');
+
+
+  userCard.classList.add('card');
+  userImage.src = imgSrc;
+  userInfo.classList.add('card-info');
+  githubName.classList.add('name');
+  userName.classList.add('username');
+
+  data.forEach( (item) => {  
+    
+    container.appendChild(githubCard(item));
+  
+  })
+
+
+  userInfo.appendChild(githubName);
+  userInfo.appendChild(userName);
+  userInfo.appendChild(userLocation);
+  userInfo.appendChild(userProfile);
+  userInfo.appendChild(userFollowers);
+  userInfo.appendChild(userFollowing);
+  userInfo.appendChild(userBio);
+  
+  userCard.appendChild(userImage);
+  userCard.appendChild(userInfo);
+
+  return githubCard;
+} 
+
+console.log(githubCard(followersArray[i]));
 
 /* List of LS Instructors Github username's: 
   tetondan
