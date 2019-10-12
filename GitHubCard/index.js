@@ -8,9 +8,9 @@
           console.log(response);
 
           response.data.followers_url.forEach((card) => {
-          const newFriendEntry = new FriendCard(card); 
+          const userData = new userCard(card); 
          
-          cards.appendChild(newFriendEntry);
+          cards.appendChild(userData);
          });
 
        })
@@ -61,7 +61,7 @@ const followersArray = [];
 </div>
 
 */
-function githubCard(newFriendEntry){
+function githubCard(userData){
 
   const userCard = document.createElement('div');
   const userImage = document.createElement('img');
@@ -81,7 +81,7 @@ function githubCard(newFriendEntry){
   githubName.classList.add('name');
   userName.classList.add('username');
 
-  newFriendEntry.forEach( (item) => {  
+  userData.forEach( (item) => {  
     
     container.appendChild(githubCard(item));
   
@@ -102,7 +102,8 @@ function githubCard(newFriendEntry){
   return githubCard;
 } 
 
-console.log(githubCard(newFriendEntry[i]));
+console.log(githubCard(userData[i]));
+console.log(githubCard(followersArray[i]));
 
 axios.post('https://api.github.com/users/hdnye/followers')
   .then((response) => {
