@@ -61,7 +61,7 @@ const followersArray = [];
 </div>
 
 */
-function githubCard(data){
+function githubCard(newFriendEntry){
 
   const userCard = document.createElement('div');
   const userImage = document.createElement('img');
@@ -81,7 +81,7 @@ function githubCard(data){
   githubName.classList.add('name');
   userName.classList.add('username');
 
-  data.forEach( (item) => {  
+  newFriendEntry.forEach( (item) => {  
     
     container.appendChild(githubCard(item));
   
@@ -102,7 +102,25 @@ function githubCard(data){
   return githubCard;
 } 
 
-console.log(githubCard(followersArray[i]));
+console.log(githubCard(newFriendEntry[i]));
+
+axios.post('https://api.github.com/users/hdnye/followers')
+  .then((response) => {
+  console.log(response);
+
+   response.data.followers_url.forEach((card) => {
+    const newEntry = new FriendsCard(card); 
+ 
+   cards.appendChild(newEntry);
+  });
+
+})
+
+.catch((error) => {
+console.log(error);
+});
+
+
 
 /* List of LS Instructors Github username's: 
   tetondan
