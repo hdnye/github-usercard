@@ -7,7 +7,7 @@
         .then((response) => {
           console.log(response);
 
-          response.data.followers_url.forEach((card) => {
+          response.data.user_url.forEach((card) => {
           const userData = new userCard(card); 
          
           cards.appendChild(userData);
